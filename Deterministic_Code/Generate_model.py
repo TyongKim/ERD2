@@ -53,7 +53,7 @@ RSN.sort()
 RSN2 = ', '.join(str(x) for x in RSN)
 
 Query_String = "select Demand_ID, AC.SDOF_R_ID, AC.\"Record Sequence Number\", Seismic_Demands.D "\
-               "FROM (select * from Analysis_Cases WHERE Damping_ID=4 and SDOF_R_ID<=54090 and GM_Channel=1 and\"Record Sequence Number\" in (" + RSN2 + ")) as AC"\
+               "FROM (select * from Analysis_Cases WHERE Damping_ID=4 and SDOF_R_ID<=27090 and GM_Channel=1 and\"Record Sequence Number\" in (" + RSN2 + ")) as AC"\
                "    JOIN Seismic_Demands "\
                "        ON Seismic_Demands.rowid = AC.Demand_ID "\
                "    order by AC.\"Record Sequence Number\""\
