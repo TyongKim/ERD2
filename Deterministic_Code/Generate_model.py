@@ -1,5 +1,5 @@
 """
-Taeyong Kim by Seoul National University
+Taeyong Kim at Seoul National University
 
 This script is for generate the DNN model for estimating structural responses
 under ground motion.
