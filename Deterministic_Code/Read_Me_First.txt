@@ -7,7 +7,9 @@ The example codes are developed based on Python with Keras and Tensorflow. Moreo
 The description of the codes are as follows:
 1. Generate_model.py: This code is for generating the deep neural network (DNN) model for estimating the nonlinear hysteric system under the random excitation. This is the raw model so that one can freely modify the architecture or training method to get his/her own model.
 
-2. Prediction.py: This code is an example of how to use the trained DNN models to estimate the structural responses (Displacement, Velocity, and Acceleration). The trained models are saved for '.h5' file.
+2. Simple_example.py: This code produces the structural responses (Displacement, Velocity, and Acceleration) estimated from trained DNN model given customized input values. One can easily run this code by changing the "Customized input" part. The trained models are saved for '.h5' file.
+
+3. Prediction.py: This code is an example of how to use the trained DNN models to estimate the structural responses (Displacement, Velocity, and Acceleration) and database. The trained models are saved for '.h5' file.
 
 Remark:
 - The trained DNN models are able to estimate the structural responses of the SDOF system for linear, bilinear, and bilinear with hysteretic degradation (Total 54,090). Details are provided in the paper. One could freely modify the architecture of the deep neural network and use the trained models.
