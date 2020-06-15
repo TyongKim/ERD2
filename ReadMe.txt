@@ -5,6 +5,6 @@ This page provides the codes and the trained models for estimating hysteric mode
 
 2. Probabilistic_Code: Extending the deterministic DNN model by using Bayesian framework. The Probabilistic DNN model produces mean and variance of the structural responses. This codes are based on the paper: Kim, T., J. Song*, O.-S. Kwon. Probabilistic Evaluation of Seismic Responses Using Deep Learning Method (In preparation)
 
-3. Deterministic_Code_ver2: Recently, improved script of "1. Deterministic_Code" is written by the authors. The code provides three trained DNN model each of which can estimate maximum transient displacement, velocity and acceleration. Details can be found in Readme in the subfolder.
+3. Deterministic_Code_ver2: Recently, I improved script of "1. Deterministic_Code". The code provides three trained DNN models each of which can estimate maximum transient displacement, velocity and acceleration. Details can be found in README in the subfolder.
 
 This page will be updated whenever new methods are developed.
