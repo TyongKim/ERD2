@@ -306,13 +306,14 @@ del model # delete DNN model in order to confused with teh P-DNN model
 linear_loss = mse_var_wrapper(merged_conv7_result)
 aleato_loss = mse_lin_wrapper(merged_conv7_aleato)
 
-model2.compile(loss={'PGA_Sa_MRnew8_1':aleato_loss , 'PGA_Sa_MRnew8_2': linear_loss }, 
-              loss_weights={'PGA_Sa_MRnew8_1': .5, 'PGA_Sa_MRnew8_2': .5}, optimizer='Adam')
-
 # If you want to transfer learning the following code might be helpful,
 # if not, ignore the codes.
 for layer in model2.layers[:153]:
     layer.trainable = False
+
+# Compile the model    
+model2.compile(loss={'PGA_Sa_MRnew8_1':aleato_loss , 'PGA_Sa_MRnew8_2': linear_loss }, 
+              loss_weights={'PGA_Sa_MRnew8_1': .5, 'PGA_Sa_MRnew8_2': .5}, optimizer='Adam')
 
 ###############################################################################
 # P-DNN model is constructed whose contents are included in 'model2' variable
@@ -358,7 +359,9 @@ X1_Sa_batch = np.concatenate(np.asarray(X1_Sa_batch)).astype(None)
 y_batch = np.concatenate(np.asarray(y_batch)).astype(None)
 
 # Train the DNN model
-history_callback = model2.fit([Hys_batch, X1_P_batch, X1_MR_batch, X1_Sa_batch], [y_batch,y_batch], batch_size = 512, epochs = Num_epochs)
+history_callback = model2.fit([Hys_batch, X1_P_batch, X1_MR_batch, X1_Sa_batch], 
+                              [y_batch,y_batch], batch_size = 512, epochs = Num_epochs)
 
-# After training the DNN model, the results of the DNN model is saved as 'DNN_model_2019*.h5'    
-# Displacement, velocity, and acceleration DNN models have been developed.
+# After training the DNN model, the results of the DNN model is saved as 
+# 'P_DNN_model_2019*.h5'    
+# Displacement, velocity, and acceleration P-DNN models have been developed.

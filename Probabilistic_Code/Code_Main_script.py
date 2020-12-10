@@ -1,10 +1,10 @@
 """
 Input script to predict seismic responses of a structural system 
 in a probabilistic manner.
-Seismic responses: Transient maximum displacement, velocity, acceleration.
+Seismic responses: peak displacement, velocity, acceleration.
 
 Define the corresponding structural system and ground motions.
-After running this script, 'Code_Main_run.py' code needs to be performed.
+Before running 'Code_Main_run.py' code, this file needs to be run.
 
 Developed by Taeyong Kim from the Seoul National Universtiy
 chs5566@snu.ac.kr
