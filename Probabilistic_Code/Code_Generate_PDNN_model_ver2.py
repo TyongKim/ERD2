@@ -28,15 +28,13 @@ import keras
 # In a local computer: set very small number, and in super computer 
 # use the entire training ground motions
 NumberofGM = 2 # In super computer, 1199
-Num_epochs = 10 # Number of epochs for training
+Num_epochs = 10 # Number of epochs
+
 
 # version check
 print(tf.__version__)
 print(keras.__version__)
-
-# If using MAC, this might be helpful
-import os
-os.environ['KMP_DUPLICATE_LIB_OK']='True'
+#tf.enable_eager_execution()
 #%%
 ###############################################################################
 # Preprocessing
@@ -192,6 +190,7 @@ for ii in range(len(RSN)):
         Ground_info_total_b.append(Ground_info_total_b_temp[ii,:])
 Ground_info_total_b = np.asarray(Ground_info_total_b)
 
+
 Input_P  = np.log(Ground_info_total_b[:,7:10])  # Input ground motions, PGA, PGV, PGD
 Input_MR = Ground_info_total_b[:,0:7]           # Input ground motions, M, R, Site
 Input_Sa = np.log(Ground_info_total_b[:,10:])   # Input ground motions, Response spectrum
@@ -244,17 +243,17 @@ def robust_mse(y_true, y_pred, variance):
     return tf.reduce_mean(wrapper_output, axis=-1)
 
 # Load DNN model
-model = keras.models.load_model('DNN_model_2019_displ.h5') # The trained DNN model
+model = tf.keras.models.load_model('DNN_model_2019_displ.h5') # The trained DNN model
 
 # Discard the original merged layers
 for ii in range(16):
     model.layers.pop()
 
 # Import Keras libraries
-from keras.layers import Dense
-from keras.models import Model
-from keras.layers.normalization import BatchNormalization
-from keras.layers.merge import concatenate
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import BatchNormalization
+from tensorflow.keras.layers import concatenate
 
 # The final merged layers for the P-DNN model
 def fianl_ann(merged_conv1, name):
@@ -358,7 +357,7 @@ X1_Sa_batch = np.concatenate(np.asarray(X1_Sa_batch)).astype(None)
 y_batch = np.concatenate(np.asarray(y_batch)).astype(None)
 
 # Train the DNN model
-history_callback = model2.fit([Hys_batch, X1_P_batch, X1_MR_batch, X1_Sa_batch], [y_batch,y_batch], batch_size = 512, epochs = Num_epochs)
+history_callback = model2.fit([Hys_batch, X1_P_batch, X1_MR_batch, X1_Sa_batch], [y_batch, y_batch], batch_size = 512, epochs = Num_epochs)
 
 # After training the DNN model, the results of the DNN model is saved as 'DNN_model_2019*.h5'    
 # Displacement, velocity, and acceleration DNN models have been developed.
