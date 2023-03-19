@@ -1,5 +1,5 @@
 # Software introduction
-This software predicts the seismic responses (peak transient displacement) of structures having complex hysteretic behavior (stiffness/strength degradations and pinching effects). The software is comprised of (1) developing the deep neural network (DNN) model and (2) predicting structural responses using the DNN models. Details of the input information are described in each script. Finally, the code can be properly operated once the seismic database ('SDDB_mBWBN_ver1.0.db') is downloaded. The database can be downloaded at 'http://ERD2.snu.ac.kr'
+This software predicts the seismic responses (peak transient displacement) of structures having complex hysteretic behavior (stiffness/strength degradations and pinching effects). The software is comprised of (1) developing the deep neural network (DNN) model and (2) predicting structural responses using the DNN models. Details of the input information are described in each script. Finally, the code can be properly operated once the seismic database ('SDDB_mBWBN_ver1.0.db') is downloaded. The database is available at 'http://ERD2.snu.ac.kr'
 
 # Developers
 Developed by Taeyong Kim (taeyongkim@ajou.ac.kr), Oh-Sung Kwon (os.kwon@utoronto.ca), and Junho Song (junhosong@snu.ac.kr)\
