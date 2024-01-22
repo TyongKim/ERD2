@@ -9,21 +9,22 @@ Ajou University, Seoul National University, and University of Toronto
 Kim, T., Kwon, O., and Song, J. (Accepted). Deep learning-based response spectrum analysis method for building structures, Earthquake Engineering and Structural Dynamics. https://doi.org/10.1002/eqe.4086
 
 # Required software and libraries
-Python 3 with Numpy version '1.24.3', Pandas version '1.5.3', Scipy version '1.10.1', Tensorflow version '2.14.0'
+When constructing databases: Python 3.8 with Numpy version '1.24.3', Pandas version '2.0.3', Scipy version '1.10.1',OpenSeesPy
+When developing DNN model: Python 3.10 with Numpy version '1.26.3', Pandas version '2.2', Scipy version '1.12.0', Tensorflow version '2.15.0'
 
 # File description
-1. Construct_SDOF_database.py: This is the code for constructing a database of structural responses of various single-degree-of-freedom (SDOF) systems. 300 steps period and 50 steps damping coefficient. In order to run this code, you may want to download the NGA-WEST database ground motion acceleration. Only two artificially generated ground motions are provided in this code.\
+1. Construct_SDOF_database.py: This code is designed to construct a database containing the structural responses of various single-degree-of-freedom (SDOF) systems. It utilizes a 300-step period and 50-step damping coefficient. To execute this code successfully, it is necessary to download the NGA-WEST database ground motion acceleration. Note that only two artificially generated ground motions are provided within this code.
 
-2. Construct_MDOF_structure.py: This code aims to generate various multi-degree-of-freedom (MDOF) systems. In here, MDOF systems represent shear buildingsconsisting degree of freedom for each story.\
+2. Construct_MDOF_structure.py: The purpose of this code is to generate diverse multi-degree-of-freedom (MDOF) systems. In this context, MDOF systems represent shear buildings with a degree of freedom for each story.
 
-3. Construct_MDOF_database.py: This is the code for constructing a database of structural responses of various multi-degree-of-freedom (MDOF) systems. The seismic responses of SDOF systems are employed to this end.\
+3. Construct_MDOF_database.py: This code is responsible for constructing a database of structural responses for various multi-degree-of-freedom (MDOF) systems. The seismic responses of SDOF systems are utilized for this purpose.
 
-4. Construct_RS.py: This code esitmates the response specturm for each ground motion using the constructed SDOF database. The response spectrum is used to calcualte the modal responses in the script of "Construct_Data4DNN.py."\
+4. Construct_RS.py: This code estimates the response spectrum for each ground motion using the constructed SDOF database. The response spectrum is then used to calculate the modal responses in the "Construct_Data4DNN.py" script.
 
-5. Construct_IM.py: The script estimates the intensity measure which is used as inputs for the DNN model predicting modal contribution coefficients.\
+5. Construct_IM.py: This script estimates the intensity measure, which serves as input for the DNN model predicting modal contribution coefficients.
 
-6. Construct_Data4DNN.py: The script preprocess dataset to make them as inputs for the DNN model.\
+6. Construct_Data4DNN.py: This script preprocesses the dataset to prepare it as input for the DNN model.
 
-7. Develop_DNN_model.py: 
+7. Develop_DNN_model.py: This script outlines the process of training the DNN model for the DC rule. Hyperparameters should be updated in accordance with the dataset.
 
-
+8. DCmodel.py: This script describes the prediction of seismic responses for structural systems using the DC rule. The DNN model is trained using the dataset in the reference. The results are then compared with those obtained using the SRSS rule.
