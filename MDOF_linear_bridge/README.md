@@ -1,14 +1,17 @@
 # Software introduction
-This software is designed to predict the responses of brdige structures represented by multi-degree-of-freedom (MDOF) 
-systems utilizing a novel Deep Learning-based Modal Combination (DC) rule. 
-The DC rule introduces modal contribution coefficients to improve prediction accuracy by accounting for 
-both the characteristics of ground motion and the dynamic properties of a structural system. 
-These coefficients are predicted by a deep neural network (DNN) model. 
-We assing a single degree of freedom (DOF) to longitudinal direction. A total of top four modes are employed to predict the displacement
-and acceleration of the 
-The software consists of two main components: (1) developing the DNN model that predicts the modal contribution coefficients, 
-and (2) predicting structural responses by applying the DC rule. For a more in-depth understanding of the theoretical foundation 
-of the DC rule, please refer to the reference.
+This software is designed to predict the responses (displacement, and acceleration) of bridge structures modeled as 
+multi-degree-of-freedom (MDOF) systems using a novel Deep Learning-Based Modal Combination (DC) rule. 
+The DC rule enhances prediction accuracy by introducing modal contribution coefficients that account for both 
+the characteristics of ground motion and the dynamic properties of the structural system. These coefficients are 
+determined using a deep neural network (DNN) model.
+
+In this framework, a single degree of freedom (DOF) is assigned to the longitudinal direction. 
+The top four dominant modes are utilized to predict the displacement and acceleration of the bridge structures.
+
+The software consists of two main components:
+1. Developing the DNN model to predict the modal contribution coefficients.
+2. Estimating structural responses by applying the DC rule.
+For a comprehensive understanding of the theoretical foundation of the DC rule, please refer to the cited reference.
 
 # Developers
 Developed by Taeyong Kim (taeyongkim@ajou.ac.kr), Oh-Sung Kwon (os.kwon@utoronto.ca), and Junho Song (junhosong@snu.ac.kr)\
