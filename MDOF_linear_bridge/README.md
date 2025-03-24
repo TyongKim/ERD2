@@ -18,13 +18,20 @@ Developed by Taeyong Kim (taeyongkim@ajou.ac.kr), Oh-Sung Kwon (os.kwon@utoronto
 Ajou University, Seoul National University, and University of Toronto
 
 # Reference
-Kim, T., Kwon, O., and Song, J. (Accepted) Deep learning-based response spectrum analysis method for bridges subjected to bi-directional ground motions, Earthquake Engineering and Structural Dynamics, https://doi.org/10.1002/eqe.4345
+Kim, T., Kwon, O., and Song, J. (Accepted) Deep learning-based response spectrum analysis method for bridges 
+subjected to bi-directional ground motions, Earthquake Engineering and Structural Dynamics, https://doi.org/10.1002/eqe.4345
 
 # Required software and libraries
 When constructing databases: Python 3.8 with Numpy version '1.24.3', Pandas version '2.0.3', Scipy version '1.10.1',OpenSeesPy
 When developing DNN model: Python 3.10 with Numpy version '1.26.3', Pandas version '2.2', Scipy version '1.12.0', Tensorflow version '2.15.0'
 
 # File description
+1. Construct_IM.py: This script estimates the intensity measure, which serves as input for the DNN model 
+predicting modal contribution coefficients. The response spectrum size of 110 X 1 is employed as an intensity measure.
+This code only provides three synthetmic ground motions for demonstration purposes.
+
+
+
 1. Construct_SDOF_database.py: This code is designed to construct a database containing the structural responses of various single-degree-of-freedom (SDOF) systems. It utilizes a 300-step period and 50-step damping coefficient. To execute this code successfully, it is necessary to download the NGA-WEST database ground motion acceleration. Note that only two artificially generated ground motions are provided within this code.
 
 2. Construct_MDOF_structure.py: The purpose of this code is to generate diverse multi-degree-of-freedom (MDOF) systems. In this context, MDOF systems represent shear buildings with a degree of freedom for each story.
@@ -33,7 +40,6 @@ When developing DNN model: Python 3.10 with Numpy version '1.26.3', Pandas versi
 
 4. Construct_RS.py: This code estimates the response spectrum for each ground motion using the constructed SDOF database. The response spectrum is then used to calculate the modal responses in the "Construct_Data4DNN.py" script.
 
-5. Construct_IM.py: This script estimates the intensity measure, which serves as input for the DNN model predicting modal contribution coefficients.
 
 6. Construct_Data4DNN.py: This script preprocesses the dataset to prepare it as input for the DNN model.
 
