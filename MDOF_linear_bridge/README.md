@@ -28,11 +28,22 @@ When developing DNN model: Python 3.10 with Numpy version '1.26.3', Pandas versi
 # File description
 1. Construct_IM.py: This script estimates the intensity measure, which serves as input for the DNN model 
 predicting modal contribution coefficients. The response spectrum size of 110 X 1 is employed as an intensity measure.
-This code only provides three synthetmic ground motions for demonstration purposes.
+This code only provides three synthetmic ground motions for demonstration purposes. The response specturm values are saved in the
+'Ground_info_bridge.npy' file.
+
+2. Generate_bridges.py: This code is designed to generate different kinds of bridges. A total of 3-, 4- ,5- , 6- span bridges.
+The structural characteristics of the bridge system is saved in the "generated_MDOF_systems" folder.
 
 
+2. Construct_SDOF_database.py: This code is designed to perform modal anlaysis. In other words, this code let you calculate the
+peak responses of each mode. 
 
-1. Construct_SDOF_database.py: This code is designed to construct a database containing the structural responses of various single-degree-of-freedom (SDOF) systems. It utilizes a 300-step period and 50-step damping coefficient. To execute this code successfully, it is necessary to download the NGA-WEST database ground motion acceleration. Note that only two artificially generated ground motions are provided within this code.
+3. Construct_MDOF_database.py: This code is desinged to perform 
+
+1. Construct_SDOF_database.py: This code is designed to construct a database containing the structural responses of various single-degree-of-freedom (SDOF) systems. 
+It utilizes a 300-step period and 50-step damping coefficient. To execute this code successfully, 
+it is necessary to download the NGA-WEST database ground motion acceleration. 
+Note that only two artificially generated ground motions are provided within this code.
 
 2. Construct_MDOF_structure.py: The purpose of this code is to generate diverse multi-degree-of-freedom (MDOF) systems. In this context, MDOF systems represent shear buildings with a degree of freedom for each story.
 

@@ -44,57 +44,14 @@ for ii in range(num_GM):
 
 
     
-    IM_Response_acc2 = np.asarray(IM_Response_acc2)*9.8    # unit: m/s^2 
+    IM_Response_acc1 = np.asarray(IM_Response_acc1) # unit g
+    IM_Response_acc2 = np.asarray(IM_Response_acc2) # unit g
     
-    # Save all Intensity measure
-    temp_RSN = np.int32(RSN[ii])
-    Query_String3 = "SELECT * FROM EQ_Records WHERE \"Record Sequence Number\" = %d " %(temp_RSN)
-    db1.execute(Query_String3) 
-    bcd_origin = db1.fetchall()
-    tmp_Ground_info={'Earthquake': np.r_[Magnitude[ii], bcd_origin[0][3], Site[ii,:]], # M, R, site
-                     'Peak_value1': bcd_origin[0][45:48],                               # PGA, PGV, PGD
-                     'Spect_acce1': bcd_origin[0][48:158],                               # Sepctral acceleration
-                     'Spect_acc_time1': IM_Response_time1,
-                     
-                     'Peak_value2': bcd_origin[0][158:161],                               # PGA, PGV, PGD
-                     'Spect_acce2': bcd_origin[0][161:271],                               # Sepctral acceleration
-                     'Spect_acc_time2': IM_Response_time2,
-                     
-                     'RSN' : temp_RSN,
-                     }
+
+    tmp_Ground_info={'Spec_value1': IM_Response_acc1,
+                     'Spec_value2': IM_Response_acc2}
     
     Ground_info.append(tmp_Ground_info)    # Ground_info[0]{'Earthquake'}    
-    print(ii)
 
 # Save the dataset
 np.save('Ground_info_bridge.npy', Ground_info) 
-
-"""    
-import matplotlib.pyplot as plt
-plt.close('all'); plt.figure()
-plt.plot(Sa_period, bcd_origin[0][48:158], 'k')
-plt.plot(Sa_period, IM_Response_acc1/9.8, 'r--')
-"""
-
-"""
-IM_Response_acc = []; IM_Response_vel = []; IM_Response_dis = [];
-for jj in range(len(str_period)):
-    period = str_period[jj]
-    w = 2*np.pi/period        
-    results = Newmark_TK(1, w**2, 0.05, gm_info2[4], gm_info2[2], gm_info2[2]/10, 1/2, 1/6)
-    IM_Response_acc.append(np.max(np.abs(results[:,2])))
-
-IM_Response_acc = np.asarray(IM_Response_acc)*9.8    # unit: m/s^2 
-
-# Check the values
-import matplotlib.pyplot as plt
-plt.close('all'); plt.figure()
-plt.plot(Sa_period, bcd_origin[0][161:271], 'k')
-plt.plot(str_period, IM_Response_acc/9.8, 'r--')
-
-# Load
-#ggm = np.load('Ground_info_final.npy',allow_pickle='TRUE')
-#ggm[0]
-#aa = np.load('GM_dir.npy')
-"""
-    
