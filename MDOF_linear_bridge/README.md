@@ -25,7 +25,7 @@ subjected to bi-directional ground motions, Earthquake Engineering and Structura
 When constructing databases: Python 3.8 with Numpy version '1.24.3', Pandas version '2.0.3', Scipy version '1.10.1',OpenSeesPy
 When developing DNN model: Python 3.10 with Numpy version '1.26.3', Pandas version '2.2', Scipy version '1.12.0', Tensorflow version '2.15.0'
 
-# File description
+# File descriptions
 1. Construct_IM.py: This script estimates the intensity measure, which serves as input for the DNN model 
 predicting modal contribution coefficients. The response spectrum size of 110 X 1 is employed as an intensity measure.
 This code only provides three synthetmic ground motions for demonstration purposes. The response specturm values are saved in the
@@ -34,11 +34,16 @@ This code only provides three synthetmic ground motions for demonstration purpos
 2. Generate_bridges.py: This code is designed to generate different kinds of bridges. A total of 3-, 4- ,5- , 6- span bridges.
 The structural characteristics of the bridge system is saved in the "generated_MDOF_systems" folder.
 
+3. Construct_SDOF_database.py: This code is designed to calcualte the responses of each mode of structural systems.
+The peak displacement and acceleration are caluclated and saved in the file. One needs OpenSees program. Plase put your OpenSees program 
+in the same folder. Or you can specify the location of the OpenSees file in the "i_SDOF.py" script.
 
-2. Construct_SDOF_database.py: This code is designed to perform modal anlaysis. In other words, this code let you calculate the
+perform modal anlaysis. In other words, this code let you calculate the
 peak responses of each mode. 
 
 3. Construct_MDOF_database.py: This code is desinged to perform 
+
+
 
 1. Construct_SDOF_database.py: This code is designed to construct a database containing the structural responses of various single-degree-of-freedom (SDOF) systems. 
 It utilizes a 300-step period and 50-step damping coefficient. To execute this code successfully, 
