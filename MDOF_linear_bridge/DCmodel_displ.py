@@ -121,17 +121,17 @@ def func_cnt(arrs):
     return zero_els
 #%% Import data
 # Load input and output data for DNN training  
-DNN_input_GM_ver1 = np.load('./Results_DL/DL_info_GM.npy') 
-DNN_input_STR = np.load('./Results_DL/DL_info_Displ_str.npy')
-DNN_results_MDOF = np.load('./Results_DL/DL_info_MDOF_displ.npy')
+DNN_input_GM_ver1 = np.load('./Results_DL/Example_DL_info_GM.npy') 
+DNN_input_STR = np.load('./Results_DL/Example_DL_info_Displ_str.npy')
+DNN_results_MDOF = np.load('./Results_DL/Example_DL_info_MDOF_displ.npy')
 DNN_results_MDOF = DNN_results_MDOF.reshape(len(DNN_results_MDOF),)
-DNN_results_SDOF = np.load('./Results_DL/DL_info_SDOF_displ.npy')
+DNN_results_SDOF = np.load('./Results_DL/Example_DL_info_SDOF_displ.npy')
 
 DNN_analysis_results = np.c_[DNN_results_MDOF, DNN_results_SDOF[:, 0:4]]
 
 # Prepare the data
 input_struc1 = torch.tensor(DNN_input_STR, dtype=torch.float32)
-input_GM = torch.tensor(DNN_input_GM_ver1, dtype=torch.float32)
+input_GM = torch.tensor(DNN_input_GM_ver1[:,:220], dtype=torch.float32)
 mdof = torch.tensor(DNN_analysis_results, dtype=torch.float32)
 
 # Create a custom dataset
@@ -149,7 +149,7 @@ class CustomDataset(torch.utils.data.Dataset):
 
 # Instantiate the dataset and DataLoader
 dataset = CustomDataset(input_struc1, input_GM, mdof)
-dataloader2 = DataLoader(dataset, batch_size=16, shuffle=False)
+dataloader2 = DataLoader(dataset, batch_size=512, shuffle=False)
 #%% Load DNN model
 model = DNNModel()
 model.load_state_dict(torch.load('./DL_data/DNN_displ_wotime.pt'))
