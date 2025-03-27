@@ -15,9 +15,9 @@ strcutre_limit = np.log(strcutre_limit) # Put log to address the skewness issue
 damping = np.array([0.005, 0.01, 0.02, 0.03, 0.05]) # damping value
 
 #%% Generate 
-# This code randomly generates 5 bridges for each span
+# This code randomly generates 2 bridges for each span
 p3_value = []
-for ii in range(5):
+for ii in range(2):
 
     mass_column = float(np.exp(np.random.uniform(strcutre_limit[0,0], strcutre_limit[0,1],1)))
     sitff_y_super = float(np.exp(np.random.uniform(strcutre_limit[1,0], strcutre_limit[1,1],1)))
@@ -32,7 +32,7 @@ for ii in range(5):
 
 
 p4_value = []
-for ii in range(5):
+for ii in range(2):
 
     mass_column = float(np.exp(np.random.uniform(strcutre_limit[0,0], strcutre_limit[0,1],1)))
     sitff_y_super = float(np.exp(np.random.uniform(strcutre_limit[1,0], strcutre_limit[1,1],1)))
@@ -47,7 +47,7 @@ for ii in range(5):
 
 
 p5_value = []
-for ii in range(5):
+for ii in range(2):
 
     mass_column = float(np.exp(np.random.uniform(strcutre_limit[0,0], strcutre_limit[0,1],1)))
     sitff_y_super = float(np.exp(np.random.uniform(strcutre_limit[1,0], strcutre_limit[1,1],1)))
@@ -62,7 +62,7 @@ for ii in range(5):
 
 
 p6_value = []
-for ii in range(5):
+for ii in range(2):
 
     mass_column = float(np.exp(np.random.uniform(strcutre_limit[0,0], strcutre_limit[0,1],1)))
     sitff_y_super = float(np.exp(np.random.uniform(strcutre_limit[1,0], strcutre_limit[1,1],1)))

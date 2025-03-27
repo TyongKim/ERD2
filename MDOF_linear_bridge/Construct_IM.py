@@ -29,7 +29,7 @@ for ii in range(num_GM):
     
     # Load ground motion
     gm1 = np.loadtxt('./Ground_motion/GM1_%d' %(ii))
-    gm2 = np.loadtxt('./Ground_motion/GM1_%d' %(ii))
+    gm2 = np.loadtxt('./Ground_motion/GM2_%d' %(ii))
     gm_td = np.loadtxt('./Ground_motion/time_%d' %(ii))
     
     IM_Response_acc1 = [];IM_Response_acc2 = [];
@@ -49,9 +49,11 @@ for ii in range(num_GM):
     
 
     tmp_Ground_info={'Spec_value1': IM_Response_acc1,
-                     'Spec_value2': IM_Response_acc2}
+                     'Spec_value2': IM_Response_acc2,
+                     'Peak_value1': np.max(np.abs(gm1)),
+                     'Peak_value2': np.max(np.abs(gm2))}
     
     Ground_info.append(tmp_Ground_info)    # Ground_info[0]{'Earthquake'}    
 
 # Save the dataset
-np.save('Ground_info_bridge.npy', Ground_info) 
+np.save('./Ground_info/Ground_info_bridge.npy', Ground_info) 
