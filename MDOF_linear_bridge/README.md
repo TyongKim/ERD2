@@ -33,8 +33,7 @@ When constructing databases, the following software and libraries are required:
 
 
 # File descriptions
-1. Construct_IM.py
-This script estimates the intensity measure, which serves as an input for the DNN model predicting modal contribution coefficients. A 110 × 1 response spectrum is employed as the intensity measure. The script includes three synthetic ground motions for demonstration purposes. The response spectrum values are saved in the "Ground_info_bridge.npy" file.
+1. Construct_IM.py: This script estimates the intensity measure, which serves as an input for the DNN model predicting modal contribution coefficients. A 110 × 1 response spectrum is employed as the intensity measure. The script includes three synthetic ground motions for demonstration purposes. The response spectrum values are saved in the "Ground_info_bridge.npy" file.
 
 2. Generate_bridges.py
 This script generates different types of bridge structures, including 3-, 4-, 5-, and 6-span bridges. The structural characteristics of the generated bridge systems are saved in the "generated_MDOF_systems" folder.
