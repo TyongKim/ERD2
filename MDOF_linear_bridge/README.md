@@ -90,3 +90,4 @@ This script predicts the peak acceleration of structural systems using the DC ru
 The DNN model is trained using the dataset referenced in the publication.
 
 Results obtained using the DC rule are compared with those derived from the Square Root of the Sum of Squares (SRSS) rule.
+
