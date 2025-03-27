@@ -35,58 +35,20 @@ When constructing databases, the following software and libraries are required:
 # File descriptions
 1. Construct_IM.py: This script estimates the intensity measure, which serves as an input for the DNN model predicting modal contribution coefficients. A 110 × 1 response spectrum is employed as the intensity measure. The script includes three synthetic ground motions for demonstration purposes. The response spectrum values are saved in the "Ground_info_bridge.npy" file.
 
-2. Generate_bridges.py
-This script generates different types of bridge structures, including 3-, 4-, 5-, and 6-span bridges. The structural characteristics of the generated bridge systems are saved in the "generated_MDOF_systems" folder.
+2. Generate_bridges.py: This script generates different types of bridge structures, including 3-, 4-, 5-, and 6-span bridges. The structural characteristics of the generated bridge systems are saved in the "generated_MDOF_systems" folder.
 
-3. Modal_analysis.py
-This script estimates key modal properties of structural systems, which serve as inputs to the DNN model. The bridge structures generated using "Generate_bridges.py" are employed as target structures.
+3. Modal_analysis.py: This script estimates key modal properties of structural systems, which serve as inputs to the DNN model. The bridge structures generated using "Generate_bridges.py" are employed as target structures.
 
-4. Construct_SDOF_database.py
-This script calculates the response of each structural mode. The bridge structures generated through "Generate_bridges.py" are used. The peak displacement and acceleration values are computed and saved.
+4. Construct_SDOF_database.py:This script calculates the response of each structural mode. The bridge structures generated through "Generate_bridges.py" are used. The peak displacement and acceleration values are computed and saved. OpenSees is required to run this script. Ensure that OpenSees is placed in the same directory, or specify its location in the "i_SDOF.py" script. TCL scripts are automatically generated when running this script.
 
-OpenSees is required to run this script.
+5. Construct_MDOF_database.py: This script calculates the seismic responses of bridge structures generated using "Generate_bridges.py". The OpenSeesPy library is employed for dynamic analysis. Ensure compatibility between Python and OpenSeesPy, as version mismatches may cause errors. For more information about OpenSeesPy, visit OpenSeesPy Documentation.
 
-Ensure that OpenSees is placed in the same directory, or specify its location in the "i_SDOF.py" script.
+6. Construct_Data4DNN.py: This script preprocesses the dataset to prepare it as an input for the DNN model. To execute this script, the output data from "Modal_analysis.py," "Construct_SDOF_database.py," and "Construct_MDOF_database.py" is required.
 
-TCL scripts are automatically generated when running this script.
+7. Develop_DNN_model_displ.py: This script trains the DNN model to predict peak displacement using the DC rule. Hyperparameters should be tuned according to the dataset. PyTorch is used for model development.
 
-5. Construct_MDOF_database.py
-This script calculates the seismic responses of bridge structures generated using "Generate_bridges.py". The OpenSeesPy library is employed for dynamic analysis.
+8. Develop_DNN_model_accel.py: This script trains the DNN model to predict peak acceleration using the DC rule. Hyperparameters should be tuned according to the dataset. PyTorch is used for model development.
 
-Ensure compatibility between Python and OpenSeesPy, as version mismatches may cause errors.
+9. DCmodel_displ.py: This script predicts the peak displacement of structural systems using the DC rule. The DNN model is trained using the dataset referenced in the publication. Results obtained using the DC rule are compared with those derived from the Square Root of the Sum of Squares (SRSS) rule.
 
-For more information about OpenSeesPy, visit: OpenSeesPy Documentation.
-
-6. Construct_Data4DNN.py
-This script preprocesses the dataset to prepare it as an input for the DNN model.
-
-To execute this script, the output data from "Modal_analysis.py," "Construct_SDOF_database.py," and "Construct_MDOF_database.py" is required.
-
-7. Develop_DNN_model_displ.py
-This script trains the DNN model to predict peak displacement using the DC rule.
-
-Hyperparameters should be tuned according to the dataset.
-
-PyTorch is used for model development.
-
-8. Develop_DNN_model_accel.py
-This script trains the DNN model to predict peak acceleration using the DC rule.
-
-Hyperparameters should be tuned according to the dataset.
-
-PyTorch is used for model development.
-
-9. DCmodel_displ.py
-This script predicts the peak displacement of structural systems using the DC rule.
-
-The DNN model is trained using the dataset referenced in the publication.
-
-Results obtained using the DC rule are compared with those derived from the Square Root of the Sum of Squares (SRSS) rule.
-
-10. DCmodel_accel.py
-This script predicts the peak acceleration of structural systems using the DC rule.
-
-The DNN model is trained using the dataset referenced in the publication.
-
-Results obtained using the DC rule are compared with those derived from the Square Root of the Sum of Squares (SRSS) rule.
-
+10. DCmodel_accel.py: This script predicts the peak acceleration of structural systems using the DC rule. The DNN model is trained using the dataset referenced in the publication. Results obtained using the DC rule are compared with those derived from the Square Root of the Sum of Squares (SRSS) rule.
