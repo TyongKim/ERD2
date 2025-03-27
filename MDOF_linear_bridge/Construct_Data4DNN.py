@@ -3,7 +3,6 @@ This script preprocesses the data to serve as input for the DNN model.
 
 Written by Taeyong Kim at Ajou University
 taeyongkim@ajou.ac.kr
-
 """
 
 import numpy as np
