@@ -13,11 +13,10 @@ import numpy as np
 strcutre_limit = np.load('structure_limit.npy') # Table 1 of the reference
 strcutre_limit = np.log(strcutre_limit) # Put log to address the skewness issue
 damping = np.array([0.005, 0.01, 0.02, 0.03, 0.05]) # damping value
-
 #%% Generate 
 # This code randomly generates 2 bridges for each span
 p3_value = []
-for ii in range(2):
+for ii in range(1):
 
     mass_column = float(np.exp(np.random.uniform(strcutre_limit[0,0], strcutre_limit[0,1],1)))
     sitff_y_super = float(np.exp(np.random.uniform(strcutre_limit[1,0], strcutre_limit[1,1],1)))
@@ -32,7 +31,7 @@ for ii in range(2):
 
 
 p4_value = []
-for ii in range(2):
+for ii in range(1):
 
     mass_column = float(np.exp(np.random.uniform(strcutre_limit[0,0], strcutre_limit[0,1],1)))
     sitff_y_super = float(np.exp(np.random.uniform(strcutre_limit[1,0], strcutre_limit[1,1],1)))
@@ -47,7 +46,7 @@ for ii in range(2):
 
 
 p5_value = []
-for ii in range(2):
+for ii in range(1):
 
     mass_column = float(np.exp(np.random.uniform(strcutre_limit[0,0], strcutre_limit[0,1],1)))
     sitff_y_super = float(np.exp(np.random.uniform(strcutre_limit[1,0], strcutre_limit[1,1],1)))
@@ -62,7 +61,7 @@ for ii in range(2):
 
 
 p6_value = []
-for ii in range(2):
+for ii in range(1):
 
     mass_column = float(np.exp(np.random.uniform(strcutre_limit[0,0], strcutre_limit[0,1],1)))
     sitff_y_super = float(np.exp(np.random.uniform(strcutre_limit[1,0], strcutre_limit[1,1],1)))
@@ -82,8 +81,15 @@ p5_value = np.asarray(p5_value, dtype='object')
 p6_value = np.asarray(p6_value, dtype='object')
 
 # Save the MDOF systems
-np.save('./generated_MDOF_systems/3_span.npy', p3_value)
-np.save('./generated_MDOF_systems/4_span.npy', p4_value)
-np.save('./generated_MDOF_systems/5_span.npy', p5_value)
-np.save('./generated_MDOF_systems/6_span.npy', p6_value)
+import pickle
+with open('./generated_MDOF_systems/3_span.pickle', 'wb') as f:
+    pickle.dump(p3_value, f, pickle.HIGHEST_PROTOCOL)
 
+with open('./generated_MDOF_systems/4_span.pickle', 'wb') as f:
+    pickle.dump(p4_value, f, pickle.HIGHEST_PROTOCOL)
+    
+with open('./generated_MDOF_systems/5_span.pickle', 'wb') as f:
+    pickle.dump(p5_value, f, pickle.HIGHEST_PROTOCOL)
+
+with open('./generated_MDOF_systems/6_span.pickle', 'wb') as f:
+    pickle.dump(p6_value, f, pickle.HIGHEST_PROTOCOL)

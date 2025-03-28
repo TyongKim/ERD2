@@ -20,7 +20,7 @@ Sa_period = np.asarray([0.005,0.01,0.015,0.02,0.025,0.03,0.035,0.04,0.045,0.05,
                         4,4.2,4.4,4.6,4.8,5,5.5,6,6.5,7,7.5,8,8.5,9,9.5,10])
 
 # Calculate response spectrum
-num_GM = 3
+num_GM = 100
 g = 9.8
 Ground_info = []
 # Load each ground motions
@@ -28,9 +28,9 @@ idx = 0
 for ii in range(num_GM):
     
     # Load ground motion
-    gm1 = np.loadtxt('./Ground_motion/GM1_%d' %(ii))
-    gm2 = np.loadtxt('./Ground_motion/GM2_%d' %(ii))
-    gm_td = np.loadtxt('./Ground_motion/time_%d' %(ii))
+    gm1 = np.loadtxt('./Ground_motion/GM1_%d.txt' %(ii))
+    gm2 = np.loadtxt('./Ground_motion/GM2_%d.txt' %(ii))
+    gm_td = np.loadtxt('./Ground_motion/time_0' )
     
     IM_Response_acc1 = [];IM_Response_acc2 = [];
     for jj in range(len(Sa_period)):

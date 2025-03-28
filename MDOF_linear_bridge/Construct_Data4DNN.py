@@ -11,16 +11,16 @@ import numpy as np
 Ground_info = np.load('./Ground_info/Ground_info_bridge.npy',allow_pickle=True) 
 
 # Structural information
-Structural_info_3span = np.load('./generated_MDOF_systems/Modal_3span_all.npy') 
-Structural_info_4span = np.load('./generated_MDOF_systems/Modal_4span_all.npy') 
-Structural_info_5span = np.load('./generated_MDOF_systems/Modal_5span_all.npy') 
-Structural_info_6span = np.load('./generated_MDOF_systems/Modal_6span_all.npy') 
+Structural_info_3span = np.load('./generated_MDOF_systems/Example_Modal_3span_all.npy') 
+Structural_info_4span = np.load('./generated_MDOF_systems/Example_Modal_4span_all.npy') 
+Structural_info_5span = np.load('./generated_MDOF_systems/Example_Modal_5span_all.npy') 
+Structural_info_6span = np.load('./generated_MDOF_systems/Example_Modal_6span_all.npy') 
 
 # Structural information for Acceleration
-Results_str_accel_3span = np.load('./generated_MDOF_systems/Modal_3span_accel.npy') 
-Results_str_accel_4span = np.load('./generated_MDOF_systems/Modal_4span_accel.npy') 
-Results_str_accel_5span = np.load('./generated_MDOF_systems/Modal_5span_accel.npy') 
-Results_str_accel_6span = np.load('./generated_MDOF_systems/Modal_6span_accel.npy') 
+Results_str_accel_3span = np.load('./generated_MDOF_systems/Example_Modal_3span_accel.npy') 
+Results_str_accel_4span = np.load('./generated_MDOF_systems/Example_Modal_4span_accel.npy') 
+Results_str_accel_5span = np.load('./generated_MDOF_systems/Example_Modal_5span_accel.npy') 
+Results_str_accel_6span = np.load('./generated_MDOF_systems/Example_Modal_6span_accel.npy') 
 
 # MDOF results (displ)
 Results_true_3span_displ = np.load('./Results_Summary_MDOF/Results_3span_displ.npy')
@@ -61,7 +61,7 @@ DNN_results_MDOF_displ = []; DNN_results_MDOF_accel = []
 DNN_results_SDOF_displ = []; DNN_results_SDOF_accel = [];
 
 idx = 0
-for ii in range(3): # For each Ground motion
+for ii in range(100): # For each Ground motion
 
     tmp_Groud_info = Ground_info[ii]
 
@@ -72,7 +72,7 @@ for ii in range(3): # For each Ground motion
     
     tmp2_GM_ver1_accel = tmp_Groud_info['Peak_value2'] # PGA for accel
     
-    for jj in range(2): # For each structure
+    for jj in range(1): # For each structure
 
         # (1)
         for kk in range(3): # 3span
@@ -92,16 +92,16 @@ for ii in range(3): # For each Ground motion
                 
             
         # (2) Structural responses
-        tmp_str_3span = Structural_info_3span[jj,:]
-        tmp_str_4span = Structural_info_4span[jj,:]
-        tmp_str_5span = Structural_info_5span[jj,:]
-        tmp_str_6span = Structural_info_6span[jj,:]             
+        tmp_str_3span = Structural_info_3span
+        tmp_str_4span = Structural_info_4span
+        tmp_str_5span = Structural_info_5span
+        tmp_str_6span = Structural_info_6span            
         
         # (2) Structural responses for accel responses
-        tmp_accel_3span = Results_str_accel_3span[jj,:]
-        tmp_accel_4span = Results_str_accel_4span[jj,:]
-        tmp_accel_5span = Results_str_accel_5span[jj,:]
-        tmp_accel_6span = Results_str_accel_6span[jj,:]        
+        tmp_accel_3span = Results_str_accel_3span
+        tmp_accel_4span = Results_str_accel_4span
+        tmp_accel_5span = Results_str_accel_5span
+        tmp_accel_6span = Results_str_accel_6span      
         
         # (2) Convernt to DNN input for structural responses
         DNN_input_STR.append(np.r_[np.log(tmp_str_3span), 3, 1/3])

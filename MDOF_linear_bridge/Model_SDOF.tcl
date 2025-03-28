@@ -1,5 +1,5 @@
-uniaxialMaterial Elastic 10   231555.579867  
-uniaxialMaterial Viscous 11   118.898862  1.0  
+uniaxialMaterial Elastic 10   68767.367646  
+uniaxialMaterial Viscous 11   33.488486  1.0  
  
 
 
